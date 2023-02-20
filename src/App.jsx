@@ -10,7 +10,6 @@ function App() {
 
   return (
     <div className="App">
-      <h2>POKEDEX</h2>
       <Routes>
 
         <Route element={<ProtectedHome/>}>
