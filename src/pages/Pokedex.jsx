@@ -1,8 +1,9 @@
 import { current } from '@reduxjs/toolkit'
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import Header from '../components/layout/Header'
+import Pagination from '../components/pokedex/Pagination'
 import PokemonCard from '../components/pokedex/PokemonCard'
 import "./styles/Pokedex.css"
 
@@ -87,7 +88,7 @@ const Pokedex = () => {
 
     //efecto para obtener los pokemones por tipo o de todos los tipos
     useEffect(() => {
-        const URL = `https://pokeapi.co/api/v2/${selectType ? `type/${selectType}/` : "pokemon/?limit=20"}`
+        const URL = `https://pokeapi.co/api/v2/${selectType ? `type/${selectType}/` : "pokemon/?limit=1279"}`
         axios.get(URL)
             .then((res) => {
                 if(selectType){
@@ -126,7 +127,7 @@ const Pokedex = () => {
     
 
     return (
-        <main>
+        <main className='pokedex'>
             <Header/>
             <p className='pokedex__title'><span className='pokedex__title-red'>Welcome {nameTrainer},</span> here you can find your favorite pokemon </p>
             <form onSubmit={handleSumbit}>
@@ -148,18 +149,13 @@ const Pokedex = () => {
 
             </section>
 
-            <section>
-                <ul>
-                    <li onClick={handlePreviousPage}>{"<<"}</li>
-                    <li onClick={() =>setCurrentPage(1)}>...</li>
-                {
-                    pagesInBlock.map(page => <li onClick={() => setCurrentPage(page)} key={page}>{page}</li> )
-                }
-                <li onClick={() =>setCurrentPage(lastPage)}>...</li>
-                <li onClick={handleNextPage}>{">>"}</li>
-                </ul>
-            </section>
-
+            <Pagination 
+            pagesInBlock={pagesInBlock}
+            setCurrentPage={setCurrentPage}
+            handleNextPage={handleNextPage}
+            handlePreviousPage={handlePreviousPage}
+            lastPage={lastPage}
+            />
         </main>
     )
 }

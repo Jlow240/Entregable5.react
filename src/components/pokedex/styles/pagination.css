@@ -1,0 +1,33 @@
+.pagination {
+    display: grid;
+    place-content: center;
+}
+
+.pagination__list {
+    top: 0;
+    display: flex;
+    flex-flow: row;
+    justify-content: space-around;
+    font-family: var(--principal-font);
+    font-size: 20px;
+    gap: 16px;
+    margin-bottom: 60px;
+}
+.pagination__item {
+    cursor: pointer;
+    border: solid 1px var(--yellow-pokemon);
+    background-color: var(--yellow-pokemon);
+    color: var(--blue-pokemon);
+    font-weight: 800;
+    text-align: center;
+    align-items: center;
+    height: 35px;
+    width: 35px;
+    border-radius: 100%;
+    transition: background-color, color 300ms ease-in-out;
+}
+
+.pagination__item:hover {
+    background-color: var(--blue-pokemon);
+    color: var(--yellow-pokemon);
+}

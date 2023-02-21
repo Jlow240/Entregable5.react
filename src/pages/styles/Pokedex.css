@@ -1,10 +1,20 @@
+.pokedex {}
+
 .pokedexList {
     display: grid;
-    
     gap: 20px;
-    grid-auto-rows: auto; 
+    grid-auto-rows: auto;
     justify-items: center;
     grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-    margin: 0 auto;  
+    margin: 0 auto;
     max-width: 1400px;
+    padding: 24px;
+}
+
+#dark .pokedex {
+    background: linear-gradient(180deg, #1c246d, #425db4, #232055)
+}
+
+#light .pokedex {
+    background: linear-gradient(180deg, #7eccfb, #e1eaf8, #81b172)
 }

@@ -5,6 +5,7 @@
     position: relative;
     overflow: hidden;
     cursor: pointer;
+    background-color: white;
 }
 
 .pokemonCard__header {

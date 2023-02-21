@@ -1,6 +1,7 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
 import { Navigate, Outlet } from 'react-router-dom'
+import Footer from './Footer'
 
 const ProtectedHome = () => {
 
@@ -9,7 +10,13 @@ const ProtectedHome = () => {
     if(nameTrainer) {
     return <Navigate to= "/pokedex"/>
     }else{
-    return <Outlet/>
+    return (
+        <>
+    <Outlet/>
+    <Footer/>
+    </>
+    )
+
     }
 }
 

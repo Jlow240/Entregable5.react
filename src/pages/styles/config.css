@@ -1,0 +1,45 @@
+.config {
+    position: fixed;
+    min-height: 100vh;
+    left: 0;
+    right: 0;
+    display: grid;
+    place-content: center;
+}
+
+#dark .config {
+    background-image: url(/public/images/background_nite.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    user-select: none;
+}
+
+#light .config {
+    background-image: url(/public/images/background_day.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    user-select: none;
+}
+
+.config__section{
+    border-radius: 16px;
+    transition: background 250ms ease-in-out;
+}
+
+#light .config__section{
+    background-color: var(--yellow-pokemon)
+}
+#dark .config__section{
+    background-color: var(--blue-pokemon)
+}
+
+.config__theme-btn {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 20px;
+    font-size: 36px;
+    cursor: pointer;
+}

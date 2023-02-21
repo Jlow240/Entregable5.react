@@ -8,6 +8,8 @@
   --principal-font: 'Play', sans-serif;
   --second-font:'Press Start 2P', cursive;
   --third-font:'Mynerve', cursive;
+  --yellow-pokemon: #fccc04 ;
+  --blue-pokemon: #075899;
 }
 
 body {
