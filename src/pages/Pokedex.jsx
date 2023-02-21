@@ -2,6 +2,7 @@ import { current } from '@reduxjs/toolkit'
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
+import Header from '../components/layout/Header'
 import PokemonCard from '../components/pokedex/PokemonCard'
 import "./styles/Pokedex.css"
 
@@ -126,6 +127,7 @@ const Pokedex = () => {
 
     return (
         <main>
+            <Header/>
             <p className='pokedex__title'><span className='pokedex__title-red'>Welcome {nameTrainer},</span> here you can find your favorite pokemon </p>
             <form onSubmit={handleSumbit}>
                 <div>

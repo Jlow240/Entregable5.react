@@ -1,7 +1,109 @@
 .home {
     display: flex;
-    margin-top: 200px;
     text-align: center;
+    height: 100vh;
     justify-content: center;
     align-items: center;
+    background-color: #3d3d3d;
+    user-select: none;
+}
+
+.home__section {
+    display: flex;
+    margin-bottom: 150px;
+    flex-direction: column;
+    align-items: center;
+}
+
+.home__img {
+    height: 177px;
+    width: 177px;
+    transition: transform 0.5s ease;
+    animation: spin 3s linear infinite;
+    
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg) translateX(-90px);
+    }
+
+    50% {
+        transform: rotate(360deg) translateX(90px) ;
+    }
+
+    100% {
+        transform: rotate(360deg) translateX(-90px) ;
+    }
+}
+
+
+.home__title {
+    font-family: var(--principal-font);
+    font-size: 44px;    
+    color: goldenrod;
+}
+
+.home__p {
+    font-size: 30px;
+    font-weight: 400;
+    margin-bottom: 16px;
+}
+
+.home__form {
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    gap: 24px;
+}
+
+@media (max-width: 440px) {
+    .home__form {
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+.home__input {
+    padding: 0;
+    margin: 0;
+    text-align: center;
+    font-size: 30px;
+    font-weight: 700;
+    color: goldenrod;
+    width: 240px;
+    border-radius: 16px;
+    outline: none;
+}
+
+.home__input::placeholder {
+    text-align: center;
+    font-size: 24px;
+}
+
+.home__btn {
+    font-family: var(--second-font);
+    font-size: 23px;
+    width: 160px;
+    border-radius: 50px;
+    background-color: gray;
+    box-shadow: 3px 4px 2px 1px black;
+    cursor: pointer;
+    transition: color 200ms ease-in-out;
+}
+
+.home__btn:hover {
+    box-shadow: 1px 1px 2px black;
+    background-color: #727272;
+    color: goldenrod;
+}
+
+.home__footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    height: 32px;
+    background-color: #2a2a2a;
+    color: #fff;
+    text-align: center;
 }

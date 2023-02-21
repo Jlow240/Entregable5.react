@@ -17,19 +17,19 @@ const Home = () => {
         <>
         <main className='home'>
             <section className='home__section'>
-                <div className='home__img'>
-                    <img src="/images/pokedex.png" alt="" />
+                <div className='home__img pokeball'>
+                    <img src="/images/Poke_Ball_icon.png" alt="" />
                 </div>
                 <h2 className='home__title'>Hello Trainer!</h2>
-                <p className='home__p'>Give me your name to star!</p>
+                <p className='home__p'>Type your name and push start!</p>
                 <form className='home__form' onSubmit={handleSumbit}>
-                    <input id="nameTrainer" type="text"  placeholder='your name...'/>
+                    <input className='home__input' id="nameTrainer" type="text"  placeholder='your name here...'/>
                     <button className='home__btn'>START</button>
                 </form>
             </section>
         </main>
         <footer className='home__footer'>
-
+            <h2>Created by jlo</h2>
         </footer></>
     )
 }

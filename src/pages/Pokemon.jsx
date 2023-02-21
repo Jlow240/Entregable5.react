@@ -1,6 +1,7 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
+import "./styles/Pokemon.css"
 
 const Pokemon = () => {
     const [pokemon, setPokemon] = useState()
@@ -8,6 +9,10 @@ const Pokemon = () => {
 
     const { id } = useParams()
 
+    const getPercentBar = (stat) => {
+        const percent = (stat * 100) / 255
+        return `${percent}%`
+    }
 
     useEffect(() => {
         const URL = `https://pokeapi.co/api/v2/pokemon/${id}/`
@@ -35,24 +40,24 @@ const Pokemon = () => {
                 <div>
                     <div>
                         <h5>Weight</h5>
-                        <h4>{pokemon?.weight}</h4>
+                        <h4>{pokemon?.weight / 10} kg</h4>
                     </div>
                     <div>
                         <h5>height</h5>
-                        <h4>{pokemon?.height}</h4>
+                        <h4>{pokemon?.height / 10} m</h4>
                     </div>
                 </div>
 
                 <div>
                     <div>
-                        <h3>type</h3>
-                        <div>
+                        <h3><b>type</b></h3>
+                        <div >
                             {
-                                pokemon?.types.map(type => <div key={type.type.name}><span>{type.type.name}</span></div>)
+                                pokemon?.types.map(type => <div className={`border-${type.type.name} bg-lg-${type.type.name}`} key={type.type.name}><span>{type.type.name}</span></div>)
                             }
                         </div>
                         <div>
-                            <h3>abilities</h3>
+                            <h3><b>abilities</b></h3>
                             <div>
                                 {
                                     pokemon?.abilities.map(ability => <div key={ability.ability.name}><span>{ability.ability.name}</span></div>)
@@ -63,20 +68,22 @@ const Pokemon = () => {
                 </div>
 
                 {/*STATS */}
-                <section>
-                    <h2>stats</h2>
-                    <section>
+                <section className='pokemon__stats'>
+                    <h2 className='pokemon__stats-title'>stats</h2>
+                    <section className='pokemon__stats-info'>
 
                         {
                             pokemon?.stats.map(stat => (
-                                <article key={stat.stat.name}>
-                                    <div>
+                                <article className='pokemon__stat' key={stat.stat.name}>
+                                    <div className='pokemon__stat-header'>
                                         <h4>{stat.stat.name}</h4>
-                                        <h5>{stat.base_state}/150</h5>
+                                        <h5>{stat.base_stat}/255</h5>
                                     </div>
-                                    <div>
-                                        <div>
-                                            <div></div>
+                                    <div className='pokemon__stat-bar'>
+                                        <div className='pokemon__stat-barGray'>
+                                            <div
+                                            className='pokemon__stat-barProgress'
+                                            style={{width: getPercentBar(stat.base_stat)}}></div>
                                         </div>
                                     </div>
                                 </article>
