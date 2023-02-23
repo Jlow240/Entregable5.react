@@ -2,6 +2,7 @@ import { current } from '@reduxjs/toolkit'
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
+import Footer from '../components/Footer'
 import Header from '../components/layout/Header'
 import Pagination from '../components/pokedex/Pagination'
 import PokemonCard from '../components/pokedex/PokemonCard'
@@ -32,7 +33,7 @@ const Pokedex = () => {
         e.preventDefault()
         setPokemonName(e.target.pokemonName.value)
         e.target.reset()
-    } 
+    }
 
     const paginationLogic = () => {
         //cantidad de pokemons por pagina
@@ -54,22 +55,22 @@ const Pokedex = () => {
         const pagesInBlock = [];
         const minPage = (actualBlock * pagesPerBlock - pagesPerBlock) + 1;
         const maxPage = actualBlock * pagesPerBlock;
-        for(let i = minPage; i <= maxPage; i++){
-            if( i <= lastPage){
+        for (let i = minPage; i <= maxPage; i++) {
+            if (i <= lastPage) {
                 pagesInBlock.push(i)
             }
         }
-        return {pagesInBlock, lastPage, pokemonInPage}
+        return { pagesInBlock, lastPage, pokemonInPage }
     }
 
-    const {pagesInBlock, lastPage, pokemonInPage} = paginationLogic()
+    const { pagesInBlock, lastPage, pokemonInPage } = paginationLogic()
 
     //para ir a la siguiente pagina
     const handleNextPage = () => {
         const newPage = currentPage + 1
-        if(newPage > lastPage){
-        setCurrentPage(1)
-        }else{
+        if (newPage > lastPage) {
+            setCurrentPage(1)
+        } else {
             setCurrentPage(newPage)
         }
 
@@ -78,9 +79,9 @@ const Pokedex = () => {
     // para ir a la pagina anterior
     const handlePreviousPage = () => {
         const newPage = currentPage - 1
-        if(newPage < 1){
-        setCurrentPage(lastPage)
-        }else{
+        if (newPage < 1) {
+            setCurrentPage(lastPage)
+        } else {
             setCurrentPage(newPage)
         }
     }
@@ -91,15 +92,15 @@ const Pokedex = () => {
         const URL = `https://pokeapi.co/api/v2/${selectType ? `type/${selectType}/` : "pokemon/?limit=1279"}`
         axios.get(URL)
             .then((res) => {
-                if(selectType){
+                if (selectType) {
                     const pokemonByType = (res.data.pokemon.map(pokemon => {
-                        return{
+                        return {
                             name: pokemon.pokemon.name,
                             url: pokemon.pokemon.url
                         }
                     }))
                     setPokemons(pokemonByType)
-                }else {
+                } else {
                     setPokemons(res.data.results)
                 }
             })
@@ -108,39 +109,41 @@ const Pokedex = () => {
 
 
     useEffect(() => {
-        const pokemonByName = pokemons.filter( pokemon => pokemon.name.includes(pokemonName.toLowerCase()))
+        const pokemonByName = pokemons.filter(pokemon => pokemon.name.includes(pokemonName.toLowerCase()))
         setPokemonsFilter(pokemonByName)
 
     }, [pokemonName, pokemons])
-    
+
     //efecto para obtener lo selecionado en el select
     useEffect(() => {
         const URL = "https://pokeapi.co/api/v2/type/"
         axios.get(URL)
-        .then((res) => setTypes(res.data.results))
-        .catch((err) => console.log(err))
+            .then((res) => setTypes(res.data.results))
+            .catch((err) => console.log(err))
     }, [])
 
     useEffect(() => {
         setCurrentPage(1)
     }, [pokemons])
-    
+
 
     return (
         <main className='pokedex'>
-            <Header/>
-            <p className='pokedex__title'><span className='pokedex__title-red'>Welcome {nameTrainer},</span> here you can find your favorite pokemon </p>
-            <form onSubmit={handleSumbit}>
-                <div>
-                    <input id="pokemonName" placeholder='Search pokemon' />
-                    <button>Catch!</button>
+            <Header />
+            <p className='pokedex__title'>Welcome <span className='pokedex__title-red'>{nameTrainer},</span> look  you can find your favorite pokemon </p>
+            <form className='pokedex__form' onSubmit={handleSumbit}>
+                <div className='pokedex__form-form'>
+                    <input id="pokemonName" className='pokedex__form-input' placeholder='Search pokemon' />
+                    <button className='pokedex__form-btn'>Go!</button>
+                </div >
+                <div className='pokedex__form-select'>
+                    <select className='pokedex__form-selector' onChange={handleChangeSelect}>
+                        <option value="">All Types</option>
+                        {
+                            types.map(type => <option key={type.url}>{type.name}</option>)
+                        }
+                    </select>
                 </div>
-                <select onChange={handleChangeSelect}>
-                    <option value="">All Types</option>
-                    {
-                        types.map(type => <option key={type.url}>{type.name}</option>)
-                    }
-                </select>
             </form>
             <section className='pokedexList'>
                 {
@@ -148,14 +151,14 @@ const Pokedex = () => {
                 }
 
             </section>
-
-            <Pagination 
-            pagesInBlock={pagesInBlock}
-            setCurrentPage={setCurrentPage}
-            handleNextPage={handleNextPage}
-            handlePreviousPage={handlePreviousPage}
-            lastPage={lastPage}
+            <Pagination
+                pagesInBlock={pagesInBlock}
+                setCurrentPage={setCurrentPage}
+                handleNextPage={handleNextPage}
+                handlePreviousPage={handlePreviousPage}
+                lastPage={lastPage}
             />
+            <Footer />
         </main>
     )
 }

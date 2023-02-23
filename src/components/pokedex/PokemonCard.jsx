@@ -22,8 +22,8 @@ const PokemonCard = ({pokemonUrl}) => {
     }, [])
     
     return (
-        <article className={`pokemonCard border-${pokemon?.types[0].type.name}`} onClick={handleClickPokemon}>
-            <section className={`pokemonCard__header bg-lg-${pokemon?.types[0].type.name}`}></section>
+        <article className={`pokemonCard bg-lg-${pokemon?.types[0].type.name} border-${pokemon?.types[0].type.name}`} onClick={handleClickPokemon}>
+            <section className={`pokemonCard__header `}></section>
             <section className='pokemonCard__body'>
                 <div className='pokemonCard__img'>
                     <img src={pokemon?.sprites.other["official-artwork"].front_default } alt="" />

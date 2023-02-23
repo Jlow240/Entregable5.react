@@ -6,14 +6,20 @@
     overflow: hidden;
     cursor: pointer;
     background-color: white;
+    transition: transform 300ms ease; 
+}
+
+.pokemonCard:hover {
+    transform: scale(1.04);
+
 }
 
 .pokemonCard__header {
     height: 200px;
-    background-color: greenyellow;
 }
 
 .pokemonCard__body {
+    background-color: white;
     padding: 24px;
 }
 

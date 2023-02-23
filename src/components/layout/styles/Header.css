@@ -1,0 +1,70 @@
+.header {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 100px;
+    background-color: var(--blue-pokemon);
+    background-position: top;
+    background-size: cover;
+}
+
+#light .header {
+    background-image: url(/public/images/headerday.png);
+}
+
+#dark .header {
+    background-image: url(/public/images/headernight.png);
+}
+
+.header__img-conteiner {}
+
+@media (min-width:470px) {
+    .header__img {
+        height: 85px;
+    }
+}
+
+.header__btn-conteiner {
+    background-color: var(--yellow-pokemon);
+    text-align: center;
+    border-radius: 20px;
+    font-size: 16px;
+    padding: 1px;
+    transition: background 300ms ease-in-out;
+
+}
+
+@media (min-width:470px) {
+    .header__btn-conteiner {
+        background-color: var(--yellow-pokemon);
+        border-radius: 20px;
+        font-size: 24px;
+        padding: 10px;
+        transition: background 300ms ease-in-out;
+
+    }
+}
+
+#dark .header__btn-conteiner {
+    background-color: var(--blue-pokemon);
+    color: var(--yellow-pokemon);
+}
+
+.header__btn-conteiner:hover {
+    background-color: var(--blue-pokemon);
+}
+
+#dark .header__btn-conteiner:hover {
+    background-color: var(--yellow-pokemon);
+    color: var(--blue-pokemon);
+}
+
+.bx-log-out {
+    font-size: 24px;
+}
+
+@media (min-width:470px) {
+    .bx-log-out {
+        font-size: 34px;
+    }
+}

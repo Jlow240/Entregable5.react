@@ -5,10 +5,11 @@
     right: 0;
     display: grid;
     place-content: center;
+    transition: background 300ms ease-in-out;
 }
 
 #dark .config {
-    background-image: url(/public/images/background_nite.jpg);
+    background-image: url(/images/background_nite.jpg);
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -16,30 +17,74 @@
 }
 
 #light .config {
-    background-image: url(/public/images/background_day.jpg);
+    background-image: url(/images/background_day.jpg);
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
     user-select: none;
 }
 
-.config__section{
+.config__section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+    height: 500px;
+    width: 350px;
+    border: 4px solid var(--blue-pokemon);
     border-radius: 16px;
     transition: background 250ms ease-in-out;
 }
 
-#light .config__section{
-    background-color: var(--yellow-pokemon)
+@media (max-width:350px) {
+    .config__section {
+        width: 300px;
+    }
 }
-#dark .config__section{
-    background-color: var(--blue-pokemon)
+
+#light .config__section {
+    background-color: #fcca04de;
+    color: var(--blue-pokemon);
+}
+
+#dark .config__section {
+    background-color: #075799e4;
+    color: var(--yellow-pokemon);
+    border: 4px solid var(--yellow-pokemon);
+}
+
+.config__title {
+    margin-top: 16px;
+    font-size: 24px;
+    font-weight: 700;
+    text-align: left;
+    padding-left: 20px;
+    
 }
 
 .config__theme-btn {
     display: flex;
+    color: var(--yellow-pokemon);
+    background-color: var(--blue-pokemon);
+    border: 3px solid var(--blue-pokemon);
+    border-radius: 15px;
     flex-direction: row;
     align-items: center;
     padding: 20px;
-    font-size: 36px;
+    font-size: 24px;
     cursor: pointer;
+    transition: transform 200ms ease-in-out;
+    user-select: none;
 }
+
+#dark .config__theme-btn {
+    color:var(--blue-pokemon);
+    background-color: var(--yellow-pokemon);
+    border: 3px solid var(--yellow-pokemon);
+}
+
+.config__theme-btn:hover {
+    transform: scale(1.05);
+}
+
+
