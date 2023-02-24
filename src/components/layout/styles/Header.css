@@ -34,6 +34,7 @@
 
 }
 
+
 @media (min-width:470px) {
     .header__btn-conteiner {
         background-color: var(--yellow-pokemon);
@@ -45,18 +46,24 @@
     }
 }
 
-#dark .header__btn-conteiner {
+
+#light .header__btn-conteiner {
     background-color: var(--blue-pokemon);
     color: var(--yellow-pokemon);
 }
 
-.header__btn-conteiner:hover {
-    background-color: var(--blue-pokemon);
+#light .header__btn-conteiner:hover {
+    background-color: var(--yellow-pokemon);
+    color: var(--blue-pokemon)
 }
 
-#dark .header__btn-conteiner:hover {
+#dark .header__btn-conteiner {
     background-color: var(--yellow-pokemon);
     color: var(--blue-pokemon);
+}
+#dark .header__btn-conteiner:hover {
+    background-color: var(--blue-pokemon);
+    color: var(--yellow-pokemon);
 }
 
 .bx-log-out {
@@ -66,5 +73,16 @@
 @media (min-width:470px) {
     .bx-log-out {
         font-size: 34px;
+    }
+}
+
+.header__btn-conteiner label{
+    font-size: 16px;
+    padding-right: 10px;
+}
+
+@media (min-width:470px) {
+    .header__btn-conteiner label{
+        font-size: 24px;
     }
 }

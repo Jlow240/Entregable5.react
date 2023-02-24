@@ -23,53 +23,54 @@ const Pokemon = () => {
 
 
     return (
-        <main>
+        <main className='pokemon'>
             {/*parte superior*/}
-            <section className='PokemonInfo'>
-                <div>
-                    <img src={pokemon?.sprites.other["official-artwork"].front_default} alt="" />
-                </div>
-            </section>
-
-
-            {/*BODY    */}
-            <section>
-                <h2># {pokemon?.id}</h2>
-                <h2>{pokemon?.name}</h2>
-
-                <div>
-                    <div>
-                        <h5>Weight</h5>
-                        <h4>{pokemon?.weight / 10} kg</h4>
+            <article className='pokemon__card'>
+                <section className={`pokemonInfo bg-lg-${pokemon?.types[0].type.name}`}>
+                    <div className='pokemonInfo__img'>
+                        <img src={pokemon?.sprites.other["official-artwork"].front_default} alt="" />
                     </div>
-                    <div>
-                        <h5>height</h5>
-                        <h4>{pokemon?.height / 10} m</h4>
-                    </div>
-                </div>
+                </section>
 
-                <div>
-                    <div>
-                        <h3><b>type</b></h3>
+                {/*BODY    */}
+                <section className={`pokemon__body bg-lg-${pokemon?.types[0].type.name}`}>
+                    <div className='pokemon__body-1'>
+                        <h2>#{pokemon?.id}</h2>
+                        <h2>{pokemon?.name}</h2>
+                    </div>
+                    <div className='pokemon__body-2'>
                         <div >
-                            {
-                                pokemon?.types.map(type => <div className={`border-${type.type.name} bg-lg-${type.type.name}`} key={type.type.name}><span>{type.type.name}</span></div>)
-                            }
+                            <h5>Weight</h5>
+                            <h4>{pokemon?.weight / 10} kg</h4>
                         </div>
                         <div>
-                            <h3><b>abilities</b></h3>
+                            <h5>Height</h5>
+                            <h4>{pokemon?.height / 10} m</h4>
+                        </div>
+                    </div>
+
+                    <div className='pokemon__body-3'>
+                        <div className='pokemon__body-3-div'>
                             <div>
+                                <h3>Type</h3>
                                 {
-                                    pokemon?.abilities.map(ability => <div key={ability.ability.name}><span>{ability.ability.name}</span></div>)
+                                    pokemon?.types.map(type => <div className={`item border-${type.type.name}-pokemon bg-lg-${type.type.name}`} key={type.type.name}><span>{type.type.name}</span></div>)
                                 }
+                            </div>
+                            <div>
+                                <h3>Abilities</h3>
+                                <div>
+                                    {
+                                        pokemon?.abilities.map(ability => <div className="item"  key={ability.ability.name}><span>{ability.ability.name}</span></div>)
+                                    }
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-
+                </section>
                 {/*STATS */}
-                <section className='pokemon__stats'>
-                    <h2 className='pokemon__stats-title'>stats</h2>
+                <section className={`pokemon__stats bg-lg-${pokemon?.types[0].type.name}`}>
+                    <h2 className='pokemon__stats-title'>Stats</h2>
                     <section className='pokemon__stats-info'>
 
                         {
@@ -82,8 +83,8 @@ const Pokemon = () => {
                                     <div className='pokemon__stat-bar'>
                                         <div className='pokemon__stat-barGray'>
                                             <div
-                                            className='pokemon__stat-barProgress'
-                                            style={{width: getPercentBar(stat.base_stat)}}></div>
+                                                className='pokemon__stat-barProgress'
+                                                style={{ width: getPercentBar(stat.base_stat) }}></div>
                                         </div>
                                     </div>
                                 </article>
@@ -91,9 +92,12 @@ const Pokemon = () => {
                         }
                     </section>
                 </section>
-            </section>
 
-        </main>
+                <section>
+
+                </section>
+            </article>
+        </main >
     )
 }
 

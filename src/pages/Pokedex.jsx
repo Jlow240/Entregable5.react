@@ -37,7 +37,7 @@ const Pokedex = () => {
 
     const paginationLogic = () => {
         //cantidad de pokemons por pagina
-        const pokemonPerPage = 12;
+        const pokemonPerPage = 8;
 
         //pokemons que se van a mostrar en la pagina actual
         const sliceStart = (currentPage - 1) * pokemonPerPage
@@ -130,7 +130,7 @@ const Pokedex = () => {
     return (
         <main className='pokedex'>
             <Header />
-            <p className='pokedex__title'>Welcome <span className='pokedex__title-red'>{nameTrainer},</span> look  you can find your favorite pokemon </p>
+            <p className='pokedex__title'>Welcome <span className='pokedex__title-red'>{nameTrainer},</span> let's see if you can find your favorite pokemon! </p>
             <form className='pokedex__form' onSubmit={handleSumbit}>
                 <div className='pokedex__form-form'>
                     <input id="pokemonName" className='pokedex__form-input' placeholder='Search pokemon' />
